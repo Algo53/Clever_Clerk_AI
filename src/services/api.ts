@@ -22,15 +22,6 @@ const DUMMY_TASKS: Task[] = [
     ]
   },
   {
-    id: 2,
-    title: 'Book dentist appointment',
-    description: 'Call the clinic to schedule a routine check-up.',
-    status: 'todo',
-    priority: 'medium',
-    category: 'Health',
-    createdAt: new Date(new Date().setDate(new Date().getDate() - 1)).toISOString(),
-  },
-  {
     id: 3,
     title: 'Buy groceries for the week',
     description: 'Milk, eggs, bread, chicken, and vegetables.',
@@ -39,20 +30,6 @@ const DUMMY_TASKS: Task[] = [
     category: 'Shopping',
     deadline: new Date().toISOString(),
     createdAt: new Date().toISOString(),
-  },
-  {
-    id: 4,
-    title: 'Plan weekend trip',
-    description: 'Research destinations and book accommodation for the upcoming long weekend.',
-    status: 'todo',
-    priority: 'low',
-    category: 'Personal',
-    createdAt: new Date(new Date().setDate(new Date().getDate() - 5)).toISOString(),
-    milestones: [
-        { id: 41, title: 'Choose destination', completed: true, completedAt: new Date(new Date().setDate(new Date().getDate() - 3)).toISOString() },
-        { id: 42, title: 'Find hotel/airbnb', completed: false },
-        { id: 43, title: 'Book travel tickets', completed: false },
-    ]
   },
   {
     id: 5,

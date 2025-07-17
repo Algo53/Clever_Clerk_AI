@@ -160,7 +160,7 @@ export default function NewTaskPage() {
   }
 
   async function onSubmit(values: TaskFormValues) {
-    await addTask({
+    const response = await addTask({
       ...values,
       status: 'todo' as TaskStatus,
       priority: values.priority as TaskPriority,
@@ -171,7 +171,12 @@ export default function NewTaskPage() {
         completed: false,
       })),
     } as any);
-    router.push('/dashboard/tasks');
+    if (response.status) {
+      toast({ title: "Success", description: "New task created successfully", variant: "default" });
+      router.push('/dashboard/tasks');
+    } else {
+      toast({ variant: 'destructive', title: "Error", description: response.errorText ||  `Error During adding new Task. Try after some time` });
+    }
   }
 
   return (

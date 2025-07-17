@@ -57,23 +57,5 @@ export const DUMMY_TASKS: Task[] = [
   },
 ];
 
-export const DUMMY_CONTEXT_ENTRIES: ContextEntry[] = [
-    {
-        id: 1,
-        content: 'From: boss@example.com - "Hey, can we move the deadline for the Q3 report to this Wednesday? It\'s super important we get it to the stakeholders ASAP."',
-        source: 'email',
-        timestamp: new Date(new Date().setHours(new Date().getHours() - 4)).toISOString(),
-    },
-    {
-        id: 2,
-        content: 'Reminder from calendar: "Dentist check-up next month"',
-        source: 'notes',
-        timestamp: new Date(new Date().setHours(new Date().getHours() - 8)).toISOString(),
-    },
-    {
-        id: 3,
-        content: 'WhatsApp from Sarah: "Don\'t forget we need to buy a birthday gift for mom!"',
-        source: 'whatsapp',
-        timestamp: new Date(new Date().setHours(new Date().getHours() - 1)).toISOString(),
-    }
+export const DUMMY_CONTEXT_ENTRIES: ContextEntry[] | [] = [
 ];

@@ -10,6 +10,7 @@ import type { ContextSource } from "@/types";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import { contextStore } from '@/store/contextStore';
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { EmptyState } from "@/components/dashboard/empty-state";
@@ -18,7 +19,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { extractContextKeywords, type ExtractContextKeywordsOutput } from "@/ai/flows/extract-context-keywords";
 import { analyzeContextSentiment, type AnalyzeContextSentimentOutput } from "@/ai/flows/analyze-context-sentiment";
-import { contextStore } from '@/store/contextStore';
 
 const contextSchema = z.object({
   content: z.string().min(1, 'Content cannot be empty'),
@@ -62,10 +62,8 @@ export default function ContextPage() {
   }
 
   useEffect(() => {
-    if (contextEntries.length === 0) {
-      fetchInitialData();
-    }
-  }, [fetchInitialData, contextEntries.length]);
+      // fetchInitialData();
+  }, []);
 
   const onSubmit = async (values: z.infer<typeof contextSchema>) => {
     setIsSubmitting(true);

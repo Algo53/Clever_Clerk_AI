@@ -47,7 +47,7 @@ export default function TasksPage() {
 
   const filteredTasks = useMemo(() => {
     return tasks?.filter(task => {
-      const searchTerm = textFilter.toLowerCase();
+      const searchTerm = textFilter?.toLowerCase();
 
       const textMatch = task?.title.toLowerCase().includes(searchTerm) ||
         (task?.description && task?.description.toLowerCase().includes(searchTerm));
