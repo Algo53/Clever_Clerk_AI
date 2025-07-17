@@ -155,7 +155,7 @@ export function TaskDetailClient({ taskId }: TaskDetailClientProps) {
                     {task.status.replace('-', ' ')}
                   </Badge>
                   {
-                    new Date(task.deadline).toLocaleDateString() < new Date().toLocaleDateString() &&
+                    task.status !== "done" && new Date(task.deadline).toLocaleDateString() < new Date().toLocaleDateString() &&
                     <Badge variant='destructive' className='capitalize mb-2'>
                       Overdue
                     </Badge>

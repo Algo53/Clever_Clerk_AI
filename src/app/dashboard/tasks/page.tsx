@@ -49,8 +49,8 @@ export default function TasksPage() {
     return tasks?.filter(task => {
       const searchTerm = textFilter?.toLowerCase();
 
-      const textMatch = task?.title.toLowerCase().includes(searchTerm) ||
-        (task?.description && task?.description.toLowerCase().includes(searchTerm));
+      const textMatch = task?.title?.toLowerCase().includes(searchTerm) ||
+        (task?.description && task?.description?.toLowerCase().includes(searchTerm));
       const statusMatch = statusFilter === 'all' || task?.status === statusFilter;
       const priorityMatch = priorityFilter === 'all' || task?.priority === priorityFilter;
       const categoryMatch = categoryFilter === 'all' || task?.category === categoryFilter;

@@ -21,7 +21,6 @@ export const taskStore = create<TaskStoreState>((set, get) => ({
         try {
             const response = await TaskService.getAllTasks();
             if (response.status === 200) {
-                console.log("The task list is : ", response.data);
                 set({ tasks: response.data || [] });
                 return {
                     status: true,
@@ -47,8 +46,6 @@ export const taskStore = create<TaskStoreState>((set, get) => ({
         try {
             const response = await TaskService.addTask(task);
             if (response.status === 201) {
-                console.log("The task is : ", response.data);
-                // set((state) => ({ tasks: [task, ...state.tasks] }));
                 return {
                     status: true,
                     errorText: null,

@@ -89,7 +89,7 @@ export function TaskCard({ task }: TaskCardProps) {
             <Calendar className="mr-1.5 h-3.5 w-3.5" />
             <span>{new Date(task.deadline).toLocaleDateString()}</span>
             {
-              new Date(task.deadline).toLocaleDateString() < new Date().toLocaleDateString() &&
+              task.status !== 'done' && new Date(task.deadline).toLocaleDateString() < new Date().toLocaleDateString() &&
               <Badge variant='destructive' className='ml-5'>
                 Overdue
               </Badge>

@@ -42,7 +42,7 @@ type TaskFormValues = z.infer<typeof taskSchema>;
 
 export default function NewTaskPage() {
   const router = useRouter();
-  const { addTask } = taskStore();
+  const { addTask, getAllTask } = taskStore();
   const { categories } = contextStore();
   const [isMilestonesLoading, setIsMilestonesLoading] = useState(false);
   const [isDeadlineLoading, setIsDeadlineLoading] = useState(false);
@@ -172,10 +172,11 @@ export default function NewTaskPage() {
       })),
     } as any);
     if (response.status) {
+      await getAllTask();
       toast({ title: "Success", description: "New task created successfully", variant: "default" });
       router.push('/dashboard/tasks');
     } else {
-      toast({ variant: 'destructive', title: "Error", description: response.errorText ||  `Error During adding new Task. Try after some time` });
+      toast({ variant: 'destructive', title: "Error", description: response.errorText || `Error During adding new Task. Try after some time` });
     }
   }
 
