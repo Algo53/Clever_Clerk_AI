@@ -150,9 +150,16 @@ export function TaskDetailClient({ taskId }: TaskDetailClientProps) {
           <CardHeader className='bg-muted/30'>
             <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
               <div>
-                <Badge className={cn('capitalize mb-2', statusClasses[task.status])}>
-                  {task.status.replace('-', ' ')}
-                </Badge>
+                <div className='flex items-start gap-2'>
+                  <Badge className={cn('capitalize mb-2', statusClasses[task.status])}>
+                    {task.status.replace('-', ' ')}
+                  </Badge>
+                  {
+                    new Date(task.deadline).toLocaleDateString() < new Date().toLocaleDateString() &&
+                    <Badge variant='destructive' className='capitalize mb-2'>
+                      Overdue
+                    </Badge>
+                  }</div>
                 <CardTitle className="text-2xl md:text-3xl">{task.title}</CardTitle>
                 {task.description && (
                   <CardDescription className="mt-2 text-base max-w-prose">{task.description}</CardDescription>

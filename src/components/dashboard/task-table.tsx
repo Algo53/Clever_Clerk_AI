@@ -37,9 +37,15 @@ export function TaskTable({ data }: { data: Task[] }) {
       accessorKey: 'title',
       header: 'Title',
       cell: ({ row }) => (
-        <Link href={`/dashboard/tasks/${row.original.id}`} className="font-medium hover:underline">
-          {row.original.title}
+        <Link
+          href={`/dashboard/tasks/${row.original.id}`}
+          className="font-medium hover:underline whitespace-nowrap"
+        >
+          {
+            row.original.title?.length > 25 ? row.original.title.slice(0, 25) + '.....' : row.original.title
+          }
         </Link>
+
       ),
     },
     {
@@ -48,7 +54,7 @@ export function TaskTable({ data }: { data: Task[] }) {
       cell: ({ row }) => {
         const status = row.original.status
         return (
-          <Badge variant={status === 'done' ? 'secondary' : 'default'} className={cn('font-semibold capitalize', {
+          <Badge variant={status === 'done' ? 'secondary' : 'default'} className={cn('font-semibold capitalize whitespace-nowrap', {
             'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300 border-green-200 dark:border-green-800/60': status === 'done',
             'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 border-blue-200 dark:border-blue-800/60': status === 'in-progress',
             'bg-gray-100 text-gray-800 dark:bg-gray-900/50 dark:text-gray-300 border-gray-200 dark:border-gray-800/60': status === 'todo',

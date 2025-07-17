@@ -38,8 +38,8 @@ export function TaskCard({ task }: TaskCardProps) {
 
   return (
     <Card className={cn("flex flex-col h-full transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2", priorityClasses[task.priority])}>
-      <CardHeader className="flex flex-row items-start justify-between pb-2">
-        <CardTitle className="text-base font-bold leading-tight line-clamp-2 pr-2">
+      <CardHeader className="flex flex-row items-center justify-between pb-2">
+        <CardTitle className="text-base pt-2 font-bold leading-tight line-clamp-2 pr-2">
           <Link href={`/dashboard/tasks/${task.id}`} className='hover:underline'>{task.title}</Link>
         </CardTitle>
         <DropdownMenu>
@@ -88,6 +88,12 @@ export function TaskCard({ task }: TaskCardProps) {
           <div className="flex items-center text-xs text-muted-foreground">
             <Calendar className="mr-1.5 h-3.5 w-3.5" />
             <span>{new Date(task.deadline).toLocaleDateString()}</span>
+            {
+              new Date(task.deadline).toLocaleDateString() < new Date().toLocaleDateString() &&
+              <Badge variant='destructive' className='ml-5'>
+                Overdue
+              </Badge>
+            }
           </div>
         )}
       </CardFooter>
